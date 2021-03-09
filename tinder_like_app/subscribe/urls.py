@@ -1,8 +1,12 @@
 from django.urls import path, include
-from .views import ChangeSubscribe
+from rest_framework import routers
+from subscribe.views import ChangeSubscribe
 
+
+router = routers.DefaultRouter()
+router.register(r'subscribe', ChangeSubscribe)
 
 
 urlpatterns = [
-    path('subscribe', ChangeSubscribe.as_view()),
+    path('', include(router.urls)),
 ]

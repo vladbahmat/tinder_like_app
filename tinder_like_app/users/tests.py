@@ -3,9 +3,11 @@ import json
 import pytest
 
 
-from .models import User
+from users.models import User
+from users.serializers
 
 pytestmark = pytest.mark.django_db
+
 
 class TestUsersEndpoints():
 

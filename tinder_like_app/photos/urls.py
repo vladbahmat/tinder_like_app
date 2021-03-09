@@ -1,6 +1,12 @@
 from django.urls import path, include
-from .views import AddPost
+from rest_framework import routers
+from photos.views import AddPost
+
+
+router = routers.DefaultRouter()
+router.register(r'photos', AddPost)
+
 
 urlpatterns = [
-      path('photos', AddPost.as_view()),
+    path('', include(router.urls)),
 ]
