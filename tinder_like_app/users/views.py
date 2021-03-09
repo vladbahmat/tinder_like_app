@@ -1,11 +1,10 @@
 from rest_framework.permissions import IsAuthenticated
-from rest_framework import status
+from rest_framework import status, generics
 from rest_framework.response import Response
-from rest_framework.generics import RetrieveUpdateAPIView
-from rest_framework.decorators import api_view, permission_classes
 from django.shortcuts import get_object_or_404
 from subscribe.service import Service
 from users.serializers import UserSerializer
+from users.models import User
 
 
 class RegisterApi(generics.GenericAPIView):
@@ -28,7 +27,8 @@ class ShowUser(generics.GenericAPIView):
             serializer = self.serializer_class(user)
             return Response(serializer.data, status=status.HTTP_200_OK)
         else:
-            return Response("Swipes end or so far", status=status.HTTP_204_NO_CONTENT)
+            return Response("Swipes end or so far",
+                            status=status.HTTP_204_NO_CONTENT)
 
     def post(self, request, pk, *args,  **kwarg):
         user = get_object_or_404(User, pk=pk)

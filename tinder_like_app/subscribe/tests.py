@@ -12,7 +12,6 @@ class TestSubscribeEndPoint():
     endpoint = ('subscribe')
 
     def test_update(self, rf, api_client):
-        old_subscribe = baker.make(Subscribe)
         new_subscribe = baker.prepare(Subscribe)
         subscribe_dict = {
             'name': new_subscribe.name,

@@ -1,4 +1,4 @@
-from rest_framework import generics, permissions, mixins
+from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
@@ -15,5 +15,5 @@ class ChangeSubscribe(generics.GenericAPIView):
         serializer = SubscribeSerializer(
             instance=saved_subscribe, data=request.data, partial=True)
         if serializer.is_valid(raise_exception=True):
-            subscribe_saved = serializer.save()
-        return Response("Subscribe changed")
+            serializer.save()
+        return Response("Subscribe changed", status=status.HTTP_200_OK)

@@ -1,8 +1,6 @@
-from .models import Subscribe
-from math import inf
+from subscribe.models import Subscribe
 from geopy.distance import geodesic
 from users.models import User
-from django.contrib.gis.geoip2 import GeoIP2
 
 
 class Service():
@@ -15,7 +13,6 @@ class Service():
         subscribe.name = 'basic'
         subscribe.save()
 
-
     @staticmethod
     def is_swipes_valid(id):
         subscribe = Subscribe.objects.get(user_id=id)
@@ -27,7 +24,6 @@ class Service():
         else:
 
             return False
-
 
     @staticmethod
     def is_radius_valid(longitude, latitude, id):

@@ -4,7 +4,6 @@ import pytest
 
 
 from users.models import User
-from users.serializers
 
 pytestmark = pytest.mark.django_db
 
